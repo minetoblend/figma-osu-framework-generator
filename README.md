@@ -1,6 +1,6 @@
-# figma-osu-framework-generator
+# figma osu!framework generator
 
-Figma plugin that generates osu-framework code
+Figma plugin that generates osu!framework code
 
 ### Requirements
 
