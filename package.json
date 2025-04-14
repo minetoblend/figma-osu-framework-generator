@@ -1,0 +1,45 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "plugma dev",
+    "build": "plugma build",
+    "preview": "plugma preview",
+    "release": "plugma release"
+  },
+  "devDependencies": {
+    "@figma/plugin-typings": "^1.100.2",
+    "html-template-tag": "4.0.1",
+    "plugma": "^1.2.8",
+    "typescript": "~5.6.2",
+    "vite": "^5.4.10"
+  },
+  "plugma": {
+    "manifest": {
+      "id": "osu-framework-codegen",
+      "name": "osu-framework",
+      "api": "1.0.0",
+      "main": "src/main.ts",
+      "capabilities": [
+        "codegen",
+        "vscode"
+      ],
+      "enableProposedApi": false,
+      "documentAccess": "dynamic-page",
+      "editorType": [
+        "dev"
+      ],
+      "networkAccess": {
+        "allowedDomains": [
+          "none"
+        ]
+      },
+      "codegenLanguages": [
+        {
+          "label": "osu-framework",
+          "value": "osu-framework"
+        }
+      ]
+    }
+  }
+}
