@@ -17,7 +17,7 @@
   "plugma": {
     "manifest": {
       "id": "osu-framework-codegen",
-      "name": "osu-framework",
+      "name": "osu!framework",
       "api": "1.0.0",
       "main": "src/main.ts",
       "capabilities": [
