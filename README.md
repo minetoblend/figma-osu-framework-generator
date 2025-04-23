@@ -13,7 +13,7 @@ Figma plugin that generates osu!framework code
 
     ```bash
     pnpm install
-    pnpm dev
+    pnpm dev # pnpm build works too if you don't want hot-reload
     ```
 
 2. Open the Figma desktop app and import the plugin:
