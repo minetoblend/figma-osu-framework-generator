@@ -5,6 +5,7 @@ import { Anchor } from "../values/Anchor";
 import { applyLayout } from "./applyLayout";
 import { TextFlowContainer } from "../drawables/TextFlowContainer";
 import { Axes } from "../values/Axes";
+import { Color4 } from "../values/Color4";
 
 export function convertText(node: TextNode, isRootNode: boolean) {
   const segments = node.getStyledTextSegments(['fontSize', 'fontName', 'fontWeight', 'fills', 'textDecoration'])
@@ -19,7 +20,6 @@ export function convertText(node: TextNode, isRootNode: boolean) {
   const italic = style[style.length - 1]?.toLowerCase()?.includes('italic')
 
   const weight = (italic ? style.slice(0, -1) : style).join(' ')
-
 
   let textAnchor = 0 as Anchor
 
@@ -74,6 +74,14 @@ export function convertText(node: TextNode, isRootNode: boolean) {
       anchor: textAnchor,
       origin: textAnchor,
     })
+  }
+
+  if (fills.length === 1) {
+    const [fill] = fills
+
+    if (fill.type === 'SOLID') {
+      drawable.colour = Color4.fromFigma(fill.color, fill.opacity)
+    }
   }
 
   const parent = applyLayout(drawable, node, isRootNode)
