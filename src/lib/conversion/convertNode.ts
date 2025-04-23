@@ -3,8 +3,9 @@ import { convertRectangle } from "./convertRectangle";
 import { Precision } from "../util/Precision";
 import { convertEllipse } from "./convertEllipse";
 import { convertText } from "./convertText";
-import { convertComponent } from "./convertComponent";
+import { convertContainer } from "./convertContainer";
 import { convertGroup } from "./convertGroup";
+import { convertFrame } from "./convertFrame";
 
 export async function convertNode(node: SceneNode, isRootNode = false) {
   switch (node.type) {
@@ -20,7 +21,10 @@ export async function convertNode(node: SceneNode, isRootNode = false) {
       return convertText(node, isRootNode)
 
     case 'COMPONENT':
-      return convertComponent(node, isRootNode)
+      return convertContainer(node, isRootNode)
+
+    case 'FRAME':
+      return convertFrame(node, isRootNode)
 
     case 'GROUP':
       return convertGroup(node, isRootNode)

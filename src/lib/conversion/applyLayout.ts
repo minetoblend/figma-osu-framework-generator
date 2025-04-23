@@ -5,6 +5,7 @@ import { MarginPadding } from "../values/MarginPadding";
 import { Anchor } from "../values/Anchor";
 import { Container } from "../drawables/Container";
 import { extractTransform } from "./extractTransform";
+import { getRelativePosition } from "./extractRelativePosition";
 
 export function applyLayout(
     drawable: Drawable,
@@ -21,10 +22,7 @@ export function applyLayout(
   if (node.parent && 'width' in node.parent) {
     const parentSize = new Vector2(node.parent.width, node.parent.height)
 
-    const relativePosition = new Vector2(
-      node.x - node.parent.x,
-      node.y - node.parent.y,
-    )
+    const relativePosition = getRelativePosition(node)
 
     switch (node.constraints.horizontal) {
       case 'SCALE':
