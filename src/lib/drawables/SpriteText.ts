@@ -11,7 +11,7 @@ export interface SpriteTextOptions extends DrawableOptions {
 
 export class SpriteText extends Drawable {
   constructor(options: SpriteTextOptions = {}) {
-    const {text, font, ...rest} = options
+    const { text, font, ...rest } = options
 
     super('SpriteText', rest);
 

@@ -34,6 +34,8 @@ export class Drawable implements ICodeGenElement {
   rotation = 0
   _relativeSizeAxes = Axes.None
 
+  supportsPadding = false
+
   get x() {
     return this.position.x
   }
@@ -88,11 +90,15 @@ export class Drawable implements ICodeGenElement {
     this.buildInitializerProperties(properties, generator)
 
     return [
-      `new ${this.name}`,
+      `new ${this.getNameWithParameters()}`,
       '{',
       properties.toString(1),
       '}',
     ].join('\n')
+  }
+
+  protected getNameWithParameters() {
+    return this.name
   }
 
   defaultSize() {

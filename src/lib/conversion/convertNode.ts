@@ -2,7 +2,9 @@ import { Unsupported } from "../drawables/Unsupported";
 import { convertRectangle } from "./convertRectangle";
 import { Precision } from "../util/Precision";
 import { convertEllipse } from "./convertEllipse";
-import { extractText } from "./extractText";
+import { convertText } from "./convertText";
+import { convertComponent } from "./convertComponent";
+import { convertGroup } from "./convertGroup";
 
 export async function convertNode(node: SceneNode, isRootNode = false) {
   switch (node.type) {
@@ -15,7 +17,13 @@ export async function convertNode(node: SceneNode, isRootNode = false) {
       break
 
     case 'TEXT':
-      return extractText(node, isRootNode)
+      return convertText(node, isRootNode)
+
+    case 'COMPONENT':
+      return convertComponent(node, isRootNode)
+
+    case 'GROUP':
+      return convertGroup(node, isRootNode)
   }
 
   return new Unsupported(`Unsupported ${node.type} element`)
